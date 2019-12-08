@@ -1,0 +1,75 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">Üye Takip Sistemi</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Anasayfa</a>
+          </li>
+          
+          <li>
+            <div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Üye İşlemleri
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" [routerLink]="['/uyeekle']">Yeni Üye Kayıt</a>
+                  <a class="dropdown-item" [routerLink]="['/uyeler']">Üye Listesi</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </div>&nbsp;
+              <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Raporlar
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Üye Raporu</a>
+                  <a class="dropdown-item" href="#">-</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </div>&nbsp;
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Tanımlamalar
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" [routerLink]="['/kurumlar']">Kurumlar</a>
+                  <a class="dropdown-item" [routerLink]="['/okullar']">Okullar</a>
+                  <a class="dropdown-item" [routerLink]="['/meslekler']">Meslekler</a>
+                  <a class="dropdown-item" [routerLink]="['/gorevler']">Görevler</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" [routerLink]="['/kullanicilar']">Kullancılar</a>
+                </div>
+              </div>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
