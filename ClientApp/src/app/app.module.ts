@@ -14,7 +14,7 @@ import { OkulComponent } from './okul/okul.component';
 import { MeslekComponent } from './meslek/meslek.component';
 import { GorevComponent } from './gorev/gorev.component';
 import { UyeComponent } from './uye/uye.component';
-import { KullaniciComponent } from './kullanici/kullanici.component';
+import { KullaniciComponent } from './kullanici/kullanici.component'; 
 import { UyeEkleComponent } from './uye-ekle/uye-ekle.component';
 
 @NgModule({

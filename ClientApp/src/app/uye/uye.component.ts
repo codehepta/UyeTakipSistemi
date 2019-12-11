@@ -77,7 +77,7 @@ export class UyeComponent implements OnInit {
                 };
         }
 
-        $('#duzenleModal').modal('hide');
+      $('#duzenleModal').modal('hide');
     }
 
     btnYeniKayit_Click() {

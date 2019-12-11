@@ -64,7 +64,7 @@ export class MeslekComponent implements OnInit {
                 };
         }
 
-        $('#duzenleModal').modal('hide');
+      $('#duzenleModal').modal('hide');
     }
 
     btnYeniKayit_Click() {
