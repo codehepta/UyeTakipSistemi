@@ -1,9 +1,20 @@
 <body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-  <footer class="fixed-bottom text-right text-small">
-    <a href="https://github.com/codehepta">codehepta</a> 2019 
-  </footer>
+  <nb-layout windowMode>
+    <nb-layout-header fixed> <app-nav-menu></app-nav-menu></nb-layout-header>
+    <nb-layout-column>
+     
+      <router-outlet></router-outlet>
+
+
+    </nb-layout-column>
+    <nb-layout-footer fixed>
+      <span class="text-right"> by <b>codehepta</b> 2019</span>
+      <!--<div class="socials">
+        <a href="https://github.com/codehepta" target="_blank" class="ion ion-social-github"></a>
+        <a href="#" target="_blank" class="ion ion-social-facebook">a</a>
+        <a href="" target="_blank" class="ion ion-social-twitter">b</a>
+        <a href="#" target="_blank" class="ion ion-social-linkedin">c</a>
+      </div>-->
+    </nb-layout-footer>
+  </nb-layout>
 </body>

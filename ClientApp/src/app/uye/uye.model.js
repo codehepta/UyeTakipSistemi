@@ -15,7 +15,8 @@ var UyeModel = /** @class */ (function () {
         this.uyeGorevDurumu = 0;
         this.sonGorevIlId = 0;
     }
-    UyeModel.prototype.TypeFix = function () {
+    UyeModel.prototype.TypeFixModelValidate = function () {
+        var errors = [];
         if (this.ikametIlId != undefined)
             this.ikametIlId = +this.ikametIlId;
         if (this.ikametIlcesi != undefined)
@@ -40,6 +41,31 @@ var UyeModel = /** @class */ (function () {
             this.uyeGorevDurumu = +this.uyeGorevDurumu;
         if (this.sonGorevIlId != undefined)
             this.sonGorevIlId = +this.sonGorevIlId;
+        if (this.ikametIlId < 1)
+            errors.push("İkamet ili girilmelidir.");
+        if (this.ikametIlcesi < 1)
+            errors.push("İkamet ilçesi girilmelidir.");
+        if (this.meslekId < 1)
+            errors.push("Meslek  seçilmelidir.");
+        if (this.kurumId < 1)
+            errors.push("Kurumu girilmelidir.");
+        if (this.egitimDurumuId < 1)
+            errors.push("Eğitim durumu girilmelidir.");
+        if (this.ogrenimDurumuId < 1)
+            errors.push("Öğrenim durumu girilmelidir.");
+        if (this.aktifOkulId < 1)
+            errors.push("Okul bilgisi girilmelidir.");
+        if (this.yabanciDilId < 1)
+            errors.push("Yabancı Dili girilmelidir.");
+        if (this.yabanciDilSeviyeId < 1)
+            errors.push("İkamet ili girilmelidir.");
+        if (this.sporLisansId < 1)
+            errors.push("Spor lisansı girilmelidir.");
+        if (this.uyeGorevDurumu < 1)
+            errors.push("Üye Görev Durumu girilmelidir.");
+        if (this.sonGorevIlId < 1)
+            errors.push("son görev ili girilmelidir.");
+        return errors;
     };
     return UyeModel;
 }());

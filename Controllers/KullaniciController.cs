@@ -20,18 +20,18 @@ namespace UyeTakip.Controllers
             _context = context;
         }
 
-        // GET: api/Kullanici
+        // GET: api/Kullanicilar
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Kullanici>>> GetKullanici()
         {
-            return await _context.Kullanici.ToListAsync();
+            return await _context.Kullanicilar.ToListAsync();
         }
 
-        // GET: api/Kullanici/5
+        // GET: api/Kullanicilar/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Kullanici>> GetKullanici(int id)
         {
-            var kullanici = await _context.Kullanici.FindAsync(id);
+            var kullanici = await _context.Kullanicilar.FindAsync(id);
 
             if (kullanici == null)
             {
@@ -41,7 +41,7 @@ namespace UyeTakip.Controllers
             return kullanici;
         }
 
-        // PUT: api/Kullanici/5
+        // PUT: api/Kullanicilar/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
@@ -73,29 +73,29 @@ namespace UyeTakip.Controllers
             return NoContent();
         }
 
-        // POST: api/Kullanici
+        // POST: api/Kullanicilar
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Kullanici>> PostKullanici(Kullanici kullanici)
         {
-            _context.Kullanici.Add(kullanici);
+            _context.Kullanicilar.Add(kullanici);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetKullanici", new { id = kullanici.Id }, kullanici);
         }
 
-        // DELETE: api/Kullanici/5
+        // DELETE: api/Kullanicilar/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Kullanici>> DeleteKullanici(int id)
         {
-            var kullanici = await _context.Kullanici.FindAsync(id);
+            var kullanici = await _context.Kullanicilar.FindAsync(id);
             if (kullanici == null)
             {
                 return NotFound();
             }
 
-            _context.Kullanici.Remove(kullanici);
+            _context.Kullanicilar.Remove(kullanici);
             await _context.SaveChangesAsync();
 
             return kullanici;
@@ -103,7 +103,7 @@ namespace UyeTakip.Controllers
 
         private bool KullaniciExists(int id)
         {
-            return _context.Kullanici.Any(e => e.Id == id);
+            return _context.Kullanicilar.Any(e => e.Id == id);
         }
     }
 }

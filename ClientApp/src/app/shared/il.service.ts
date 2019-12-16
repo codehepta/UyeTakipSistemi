@@ -90,7 +90,7 @@ export class IlService {
         new IlModel(80, 'OSMANİYE'),
         new IlModel(81, 'DÜZCE')
     ];
-    ilceler: IlceModel[];
+  ilceler: IlceModel[] = (((data as any).default) as IlceModel[]);
 
     public Get(): IlModel[] {
 
@@ -114,8 +114,12 @@ export class IlService {
     }
 
     public GetIlceAdi(pId: number): string {
-        if (pId != undefined && pId != 0)
-            return this.ilceler.find(x => +x.id == pId).name;
+      if (pId != undefined && pId != 0) {
+        let m: any = this.ilceler.find(x => +x.id == pId);
+        if(m!=null)
+          return m.name;
+      }
+            
     }
 
 

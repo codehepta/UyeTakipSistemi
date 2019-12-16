@@ -21,34 +21,38 @@ namespace UyeTakip.Data
         public DbSet<Okul> Okullar { get; set; }
         public DbSet<Meslek> Meslekler { get; set; }
         public DbSet<Kurum> Kurumlar { get; set; }
+
+        public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Gorev> Gorevler { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Uye>().HasData(
-                new Uye() { Id = 1,
-                AciklamaNot="Aciklama",
-                Adi = "John",
-                Soyadi = "Doe",
-                AktifOkulId=1,
-                DogumTarihi = DateTime.Now,
-                DogumYeri = "Ankara",
-                EgitimDurumuId = 1,
-                EpostaAdresi = "deneme@deneme.com",
-                GsmAdresi = "5305000000",
-                IkametIlcesi=1,
-                IkametIlId=1,
-                KurumId=1,
-                MeslekId =1,
-                OgrenimDurumuId=1,
-                Resim=null,
-                SonGorevIlId= 1,
-                SonTeskilatGorevi="",
-                SporLisansId=1,
-                UyeGorevDurumu=DbEnums.GorevDurumu.GorevAlabilir,
-                UzmanlikBeceriler="lorem ipsum",
-                YabanciDilId=1,
-                YabanciDilSeviyeId=1
-                
+                new Uye()
+                {
+                    Id = 1,
+                    AciklamaNot = "Aciklama",
+                    Adi = "John",
+                    Soyadi = "Doe",
+                    AktifOkulId = 1,
+                    DogumTarihi = DateTime.Now,
+                    DogumYeri = "Ankara",
+                    EgitimDurumuId = 1,
+                    EpostaAdresi = "deneme@deneme.com",
+                    GsmAdresi = "5305000000",
+                    IkametIlcesi = 1,
+                    IkametIlId = 1,
+                    KurumId = 1,
+                    MeslekId = 1,
+                    OgrenimDurumuId = 1,
+                    Resim = null,
+                    SonGorevIlId = 1,
+                    SonTeskilatGorevi = "",
+                    SporLisansId = 1,
+                    UyeGorevDurumu = DbEnums.GorevDurumu.GorevAlabilir,
+                    UzmanlikBeceriler = "lorem ipsum",
+                    YabanciDilId = 1,
+                    YabanciDilSeviyeId = 1
+
 
 
                 });
@@ -62,6 +66,11 @@ namespace UyeTakip.Data
              new Kurum() { Id = 6, Ad = "Düzce Belediyesi" },
              new Kurum() { Id = 7, Ad = "Şırnak Milli Eğitim Müdürlüğü" }
              );
+
+            modelBuilder.Entity<Kullanici>().HasData(
+            new Kullanici() { Id = 1, Username = "admin", Password = "123456", KullaniciTipi = DbEnums.KullaniciTipleri.Admin },
+            new Kullanici() { Id = 2, Username = "bolgekul", Password = "123456", KullaniciTipi = DbEnums.KullaniciTipleri.Bolge }
+            );
 
 
             modelBuilder.Entity<Okul>().HasData(
@@ -80,6 +89,13 @@ namespace UyeTakip.Data
           new Okul() { Id = 13, Ad = "ANTALYA BİLİM ÜNİVERSİTESİ" },
           new Okul() { Id = 14, Ad = "ARTVİN ÇORUH ÜNİVERSİTESİ" }
           );
+
+            modelBuilder.Entity<Meslek>().HasData(
+                new Meslek() { Id = 1, Ad = "Bilgisayar Mühendisi" },
+                new Meslek() { Id = 2, Ad = "İnşaat Mühendisi" },
+                new Meslek() { Id = 3, Ad = "Gazeteci" },
+                new Meslek() { Id = 4, Ad = "Elektirik Mühendisi" },
+                new Meslek() { Id = 5, Ad = "Öğretmen" });
 
 
             modelBuilder.Entity<Gorev>().HasData(
@@ -108,8 +124,8 @@ namespace UyeTakip.Data
         new Gorev() { Id = 23, Ad = "İzleme Birimi" }
         );
         }
-        public DbSet<UyeTakip.Data.Kullanici> Kullanici { get; set; }
-        
+
+
     }
 }
 

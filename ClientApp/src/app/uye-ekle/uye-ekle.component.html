@@ -1,159 +1,167 @@
-<h2>
-  Yeni Üye Kayıt
-</h2>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="txtAdi">Adı</label>
-      <input type="text" class="form-control" id="txtAdi" placeholder="Adı"
-             [(ngModel)]="duzenleModel.adi">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="txtSoyadi">Soyadı</label>
-      <input type="text" class="form-control" id="txtSoyadi" placeholder="Soyadı"
-             [(ngModel)]="duzenleModel.soyadi">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="txtGsmAdresi">Gsm Telefon</label>
-      <input type="text" class="form-control" id="txtGsmAdresi" placeholder="Cep Telefon" [(ngModel)]="duzenleModel.gsmAdresi">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="txtEposta">Eposta</label>
-      <input type="email" class="form-control" id="txtEposta" placeholder="Eposta Adresi"
-             [(ngModel)]="duzenleModel.epostaAdresi">
-    </div>
-  </div>
+<nb-card accent="danger">
+  <nb-card-header>Yeni Üye Kayıt</nb-card-header>
+  <nb-card-body>
 
 
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="txtIkametIl">İkamet İli</label>
-      <select id="txtIkametIl" class="form-control" (change)="txtIkametIl_Changed($event)">
-        <option value="0" selected>-- Lütfen ikamet ilinizi seçiniz --</option>
-        <option value="{{i.id}}" *ngFor="let i of iller">{{i.ad}}</option>
-      </select>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="txtAdi">Adı</label>
+        <input type="text" class="form-control" id="txtAdi" placeholder="Adı"
+               [(ngModel)]="duzenleModel.adi">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="txtSoyadi">Soyadı</label>
+        <input type="text" class="form-control" id="txtSoyadi" placeholder="Soyadı"
+               [(ngModel)]="duzenleModel.soyadi">
+      </div>
     </div>
-    <div class="form-group col-md-3">
-      <label for="txtIkametIlcesi">İkamet İlçesi</label>
-      <select id="txtIkametIlcesi" class="form-control"
-              [(ngModel)]="duzenleModel.ikametIlcesi">
-        <option value="0" selected>-- Lütfen ikamet ilçenizi seçiniz --</option>
-        <option value="{{ic.id}}" *ngFor="let ic of seciliIlceler">{{ic.name}}</option>
-      </select>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="txtDogumYeri">Doğum Yeri</label>
-      <input type="text" class="form-control" id="txtDogumYeri" placeholder="Doğum Yeri"
-              [(ngModel)]="duzenleModel.dogumYeri">
-    </div>
-    <div class="form-group col-md-3">
-      <label for="txtDogumTarihi">Doğum Tarihi</label>
-      <input type="date" class="form-control" id="txtDogumTarihi"
-              [(ngModel)]="duzenleModel.dogumTarihi"
-             >
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="txtMeslek">Meslek</label>
-      <select id="txtMeslek" class="form-control" [(ngModel)]="duzenleModel.meslekId">
-        <option value="0" selected>-- Lütfen bir Meslek seçiniz --</option>
-        <option value="{{m.id}}" *ngFor="let m of meslekler">{{m.ad}}</option>
-      </select>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="txtKurum">Kurum</label>
-      <select id="txtKurum" class="form-control"  [(ngModel)]="duzenleModel.kurumId">
-        <option value="0" selected >-- Lütfen bir kurum seçiniz --</option>
-        <option value="{{k.id}}" *ngFor="let k of kurumlar">{{k.ad}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="txtEgitim">Eğitim Durumu</label>
-      <select id="txtEgitim" class="form-control"  [(ngModel)]="duzenleModel.egitimDurumuId">
-        <option value="0" selected>-- Lütfen eğitim durumunuzu seçiniz --</option>
-      </select>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="txtOgrenim">Öğrenim Durumu</label>
-      <select id="txtOgrenim" class="form-control" [(ngModel)]="duzenleModel.ogrenimDurumuId">
-        <option value="0" selected>-- Lütfen öğrenim durumunuzu seçiniz --</option>
-      </select>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="txtGsmAdresi">Gsm Telefon</label>
+        <input type="text" class="form-control" id="txtGsmAdresi" placeholder="Cep Telefon" [(ngModel)]="duzenleModel.gsmAdresi">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="txtEposta">Eposta</label>
+        <input type="email" class="form-control" id="txtEposta" placeholder="Eposta Adresi"
+               [(ngModel)]="duzenleModel.epostaAdresi">
+      </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="txtOkul">Okul Seçiniz</label>
-      <select id="txtOkul" class="form-control" [(ngModel)]="duzenleModel.aktifOkulId">
-        <option value="0" selected>-- Lütfen okulunuzu seçiniz --</option>
-        <option value="{{o.id}}" *ngFor="let o of okullar">{{o.ad}}</option>
-      </select>
-    </div>
-  </div>
 
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="txtYabanciDil">Yabancı Dil</label>
-      <select id="txtYabanciDil" class="form-control" [(ngModel)]="duzenleModel.yabanciDilId">
-        <option value="0" selected>-- Lütfen yabancı dilinizi seçiniz --</option>
-      </select>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="txtIkametIl">İkamet İli</label>
+        <select id="txtIkametIl" class="form-control" (change)="txtIkametIl_Changed($event)">
+          <option value="0" selected>-- Lütfen ikamet ilinizi seçiniz --</option>
+          <option value="{{i.id}}" *ngFor="let i of iller">{{i.ad}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="txtIkametIlcesi">İkamet İlçesi</label>
+        <select id="txtIkametIlcesi" class="form-control"
+                [(ngModel)]="duzenleModel.ikametIlcesi">
+          <option value="0" selected>-- Lütfen ikamet ilçenizi seçiniz --</option>
+          <option value="{{ic.id}}" *ngFor="let ic of seciliIlceler">{{ic.name}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="txtDogumYeri">Doğum Yeri</label>
+        <input type="text" class="form-control" id="txtDogumYeri" placeholder="Doğum Yeri"
+               [(ngModel)]="duzenleModel.dogumYeri">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="txtDogumTarihi">Doğum Tarihi</label>
+        <input type="date" class="form-control" id="txtDogumTarihi"
+               [(ngModel)]="duzenleModel.dogumTarihi">
+      </div>
     </div>
-    <div class="form-group col-md-3">
-      <label for="txtYabanciDilSeviye">Yabancı Dil Seviyesi</label>
-      <select id="txtYabanciDilSeviye" class="form-control" [(ngModel)]="duzenleModel.yabanciDilSeviyeId">
-        <option value="0" selected>-- Lütfen yabancı dil seviyenizi seçiniz --</option>
-      </select>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="txtMeslek">Meslek</label>
+        <select id="txtMeslek" class="form-control" [(ngModel)]="duzenleModel.meslekId">
+          <option value="0" selected>-- Lütfen bir Meslek seçiniz --</option>
+          <option value="{{m.id}}" *ngFor="let m of meslekler">{{m.ad}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="txtKurum">Kurum</label>
+        <select id="txtKurum" class="form-control" [(ngModel)]="duzenleModel.kurumId">
+          <option value="0" selected>-- Lütfen bir kurum seçiniz --</option>
+          <option value="{{k.id}}" *ngFor="let k of kurumlar">{{k.ad}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="txtEgitim">Eğitim Durumu</label>
+        <select id="txtEgitim" class="form-control" [(ngModel)]="duzenleModel.egitimDurumuId">
+          <option value="0" selected>-- Lütfen eğitim durumunuzu seçiniz --</option>
+          <option value="{{k.key}}" *ngFor="let k of egitimDurumlari">{{k.value}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="txtOgrenim">Öğrenim Durumu</label>
+        <select id="txtOgrenim" class="form-control" [(ngModel)]="duzenleModel.ogrenimDurumuId">
+          <option value="0" selected>-- Lütfen öğrenim durumunuzu seçiniz --</option>
+          <option value="{{k.key}}" *ngFor="let k of ogrenimDurumlari">{{k.value}}</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="txtOkul">Okul Seçiniz</label>
+        <select id="txtOkul" class="form-control" [(ngModel)]="duzenleModel.aktifOkulId">
+          <option value="0" selected>-- Lütfen okulunuzu seçiniz --</option>
+          <option value="{{o.id}}" *ngFor="let o of okullar">{{o.ad}}</option>
+        </select>
+      </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="txtSporLisans">Spor Lisans</label>
-      <select id="txtSporLisans" class="form-control" [(ngModel)]="duzenleModel.sporLisansId">
-        <option value="0" selected>-- Lütfen spor lisansınızı seçiniz --</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="txtUzmanlikBeceriler">Uzmanlık Becerileri</label>
-    <input type="text" class="form-control" id="txtUzmanlikBeceriler" placeholder="Uzmanlık Becerileri"
-            [(ngModel)]="duzenleModel.uzmanlikBeceriler"
-           >
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="txtUyeGorevDurumu">Üye Görev Durumu</label>
-      <select id="txtUyeGorevDurumu" class="form-control"  [(ngModel)]="duzenleModel.uyeGorevDurumu">
-        <option value="0" selected>-- Lütfen görev durumunuzu seçiniz --</option>
-      </select>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="txtSonTeskilatGorevi">Son Teşkilat Görevi</label>
-      <input type="text" class="form-control" id="txtSonTeskilatGorevi" placeholder="Son Teşkilat Görevi"
-          [(ngModel)]="duzenleModel.sonTeskilatGorevi"   >
-    </div>
-    <div class="form-group col-md-3">
-      <label for="txtSonGorevIl">Son Görev İli</label>
-      <select id="txtSonGorevIl" class="form-control" [(ngModel)]="duzenleModel.sonGorevIlId">
-        <option value="0" selected>-- Lütfen son görev ilinizi seçiniz --</option>
-        <option value="{{i2.id}}" *ngFor="let i2 of iller">{{i2.ad}}</option>
-      </select>
-    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="txtYabanciDil">Yabancı Dil</label>
+        <select id="txtYabanciDil" class="form-control" [(ngModel)]="duzenleModel.yabanciDilId">
+          <option value="0" selected>-- Lütfen yabancı dilinizi seçiniz --</option>
+          <option value="{{k.key}}" *ngFor="let k of yabanciDiller">{{k.value}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="txtYabanciDilSeviye">Yabancı Dil Seviyesi</label>
+        <select id="txtYabanciDilSeviye" class="form-control" [(ngModel)]="duzenleModel.yabanciDilSeviyeId">
+          <option value="0" selected>-- Lütfen yabancı dil seviyenizi seçiniz --</option>
+          <option value="{{k.key}}" *ngFor="let k of yabanciDilSeviyeler">{{k.value}}</option>
+        </select>
+      </div>
 
-  </div>
-
-  <div class="form-group">
-    <label for="txtAciklamaNot">Açıklama Not</label>
-    <textarea class="form-control" id="txtAciklamaNot" rows="3" placeholder="Açıklamalar notlar"
-[(ngModel)]="duzenleModel.aciklamaNot"
-              ></textarea>
-  </div>
-
-  <div class="text-right">
-    <div>
-      <button type="button" class="btn btn-danger" routerLink="/uyeler">Vazgeç</button>&nbsp;
-      <button type="button" class="btn btn-primary text-right" (click)="btn_Kaydet_Click()">Kaydet</button>
+      <div class="form-group col-md-6">
+        <label for="txtSporLisans">Spor Lisans</label>
+        <select id="txtSporLisans" class="form-control" [(ngModel)]="duzenleModel.sporLisansId">
+          <option value="0" selected>-- Lütfen spor lisansınızı seçiniz --</option>
+          <option value="{{k.key}}" *ngFor="let k of sporLisanslari">{{k.value}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="txtUzmanlikBeceriler">Uzmanlık Becerileri</label>
+      <input type="text" class="form-control" id="txtUzmanlikBeceriler" placeholder="Uzmanlık Becerileri"
+             [(ngModel)]="duzenleModel.uzmanlikBeceriler">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="txtUyeGorevDurumu">Üye Görev Durumu</label>
+        <select id="txtUyeGorevDurumu" class="form-control" [(ngModel)]="duzenleModel.uyeGorevDurumu">
+          <option value="0" selected>-- Lütfen görev durumunuzu seçiniz --</option>
+          <option value="{{k.key}}" *ngFor="let k of uyeGorevDurumlari">{{k.value}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="txtSonTeskilatGorevi">Son Teşkilat Görevi</label>
+        <input type="text" class="form-control" id="txtSonTeskilatGorevi" placeholder="Son Teşkilat Görevi"
+               [(ngModel)]="duzenleModel.sonTeskilatGorevi">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="txtSonGorevIl">Son Görev İli</label>
+        <select id="txtSonGorevIl" class="form-control" [(ngModel)]="duzenleModel.sonGorevIlId">
+          <option value="0" selected>-- Lütfen son görev ilinizi seçiniz --</option>
+          <option value="{{i2.id}}" *ngFor="let i2 of iller">{{i2.ad}}</option>
+        </select>
+      </div>
 
     </div>
 
-  </div>
+    <div class="form-group">
+      <label for="txtAciklamaNot">Açıklama Not</label>
+      <textarea class="form-control" id="txtAciklamaNot" rows="3" placeholder="Açıklamalar notlar"
+                [(ngModel)]="duzenleModel.aciklamaNot"></textarea>
+    </div>
+
+    <div class="text-right">
+      <div>
+        <button type="button" class="btn btn-danger" routerLink="/uyeler">Vazgeç</button>&nbsp;
+        <button type="button" class="btn btn-primary text-right" (click)="btn_Kaydet_Click()">Kaydet</button>
+
+      </div>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+

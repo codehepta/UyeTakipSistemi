@@ -30,10 +30,26 @@ export class KullaniciComponent implements OnInit {
 
     }
 
+  public getkullaniciTipi(tip: number): string {
+    switch (tip) {
+      case 1:
+        return "Admin";
+      case 2:
+        return "Genel Merkez";
+      case 3:
+        return "Bölge";
+      case 4:
+        return "Rapor";
+      default:
+        return 'N/A';
+    }
+  }
+
     GetKullanicilar(): void {
         this.service.Get().subscribe(r => {
-            this.kullanicilar = r;
+          this.kullanicilar = r;
         });
+
     }
 
     btnDuzenle_Click(k: KullaniciModel) {
@@ -42,10 +58,12 @@ export class KullaniciComponent implements OnInit {
         model.id = k.id;
         model.username = k.username;
         model.password = k.password;
+        model.kullaniciTipi = k.kullaniciTipi;
         this.duzenleModel = model;
     }
 
-    btnUpdate_Click() {
+  btnUpdate_Click() {
+    this.duzenleModel.kullaniciTipi = +this.duzenleModel.kullaniciTipi;
         if (this.duzenleModel.id == undefined) {
             this.service.Insert(this.duzenleModel).subscribe(
                 (data) => {

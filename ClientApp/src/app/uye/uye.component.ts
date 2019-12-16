@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UyeModel } from './uye.model';
 import { UyeService } from './uye.service';
 import { IlService } from '../shared/il.service';
+import { EnumsService } from '../shared/enums.service';
+
 
 @Component({
   selector: 'app-uye',
@@ -13,7 +15,9 @@ export class UyeComponent implements OnInit {
     uyeler: UyeModel[];
     duzenleModel: UyeModel = new UyeModel();
     constructor(private service: UyeService,
-        private ilService: IlService) { }
+      private ilService: IlService,
+      private enumsService:EnumsService
+    ) { }
 
     ngOnInit() {
         this.GetUyeler();
@@ -43,9 +47,15 @@ export class UyeComponent implements OnInit {
 
     GetIlAdi(pId:number): string {
         return this.ilService.GetIlAdi(pId);
-    }
+  }
 
-    GetIlceAdi(pId: number): string {
+  GetGorevDurumString(pId: number): string {
+    return this.enumsService.GetUyeGorevDurumuById(pId);
+  }
+
+
+
+  GetIlceAdi(pId: number): string {
         return this.ilService.GetIlceAdi(pId);
     }
 
@@ -70,7 +80,7 @@ export class UyeComponent implements OnInit {
         else {
             this.service.Update(this.duzenleModel).subscribe(
                 (data) => {
-                    this.ngOnInit();
+                  this.service.uyelerChanged.emit();
                 }),
                 err => {
                     console.log("Error", err);

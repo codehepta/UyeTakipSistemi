@@ -1,40 +1,39 @@
 
-<div class="container">
-  <h2>
-    Üyeler
-  </h2>
-  <p class="text-right">
-    <button type="button" class="btn btn-primary text-right" routerLink="/uyeekle" >Yeni Kayıt</button>
-  </p>
+<nb-card accent="info">
+  <nb-card-header>Üyeler</nb-card-header>
+  <nb-card-body>
+    <p class="text-right">
+      <button type="button" class="btn btn-primary text-right" routerLink="/uyeekle">Yeni Kayıt</button>
+    </p>
 
-  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="uyeler">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Ad Soyad</th>
-        <th>İl</th>
-        <th>İlçe</th>
-        <th>Görev Durumu</th>
-        <th>Gsm</th>
-        <th class="text-right">İşlemler</th>
+    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="uyeler">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Ad Soyad</th>
+          <th>İl</th>
+          <th>İlçe</th>
+          <th>Görev Durumu</th>
+          <th>Gsm</th>
+          <th class="text-right">İşlemler</th>
 
-      </tr>
-    </thead>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr *ngFor="let k  of uyeler">
-        <td>{{ k.id }}</td>
-        <td>{{ k.adi }} {{ k.soyadi }}</td>
-        <td>{{ GetIlAdi(k.ikametIlId) }}</td>
-        <td>{{ GetIlceAdi(k.ikametIlcesi) }}</td>
-        <td>{{ k.uyeGorevDurumu }}</td>
-        <td>{{ k.gsmAdresi }}</td>
-        <td class="text-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#duzenleModal" (click)="btnDuzenle_Click(k)">Düzenle</button>&nbsp;<button type="button" class="btn btn-danger" (click)="btnSil_Click(k.id)">Sil</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
+      <tbody>
+        <tr *ngFor="let k  of uyeler">
+          <td>{{ k.id }}</td>
+          <td>{{ k.adi }} {{ k.soyadi }}</td>
+          <td>{{ GetIlAdi(k.ikametIlId) }}</td>
+          <td>{{ GetIlceAdi(k.ikametIlcesi) }}</td>
+          <td>{{ GetGorevDurumString(k.uyeGorevDurumu) }}</td>
+          <td>{{ k.gsmAdresi }}</td>
+          <td class="text-right"><button type="button" disabled class="btn btn-info" data-toggle="modal" data-target="#duzenleModal" (click)="btnDuzenle_Click(k)">Düzenle</button>&nbsp;<button type="button" class="btn btn-danger" (click)="btnSil_Click(k.id)">Sil</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>
 
 <!-- Modal -->
 <div class="modal fade" id="duzenleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

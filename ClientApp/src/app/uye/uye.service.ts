@@ -2,6 +2,8 @@ import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { UyeModel } from './uye.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { KeyValue } from '@angular/common';
+import { KeyValueModel } from '../shared/KeyValue';
 
 
 @Injectable({
@@ -15,6 +17,17 @@ export class UyeService {
     public Get(): Observable<UyeModel[]> {
         return this.http.get<UyeModel[]>(this.baseUrl + 'api/Uye');
     }
+
+  //GetUyeGorevDurumlar
+  public GetUyeGorevDurumlar(): Observable<KeyValueModel[]> {
+    return this.http.get<KeyValueModel[]>(this.baseUrl + 'api/Uye/GetUyeGorevDurumlar');
+  }
+
+  //GetUyeGorevDurumlar
+  public GetUyeIller(): Observable<KeyValueModel[]> {
+    return this.http.get<KeyValueModel[]>(this.baseUrl + 'api/Uye/GetUyeIller');
+  }
+
     protected GetById(id: number): Observable<UyeModel> {
         return this.http.get<UyeModel>(this.baseUrl + 'api/Uye/' + id);
     }

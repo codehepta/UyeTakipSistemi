@@ -22,5 +22,18 @@ namespace UyeTakip.Data
             [Description("Numara Yanlış")]
             NumaraYanlis =5
         }
+
+        public enum KullaniciTipleri
+        {
+            [Description("Admin")]
+            Admin = 1,
+            [Description("Genel Merkez")]
+            GenelMerkez = 2,
+            [Description("Bölge")]
+            Bolge = 3,
+            [Description("Rapor")]
+            Rapor = 4
+            
+        }
     }
 }

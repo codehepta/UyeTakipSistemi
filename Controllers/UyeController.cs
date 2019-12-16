@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UyeTakip.Data;
+using UyeTakip.ViewModels;
 
 namespace UyeTakip.Controllers
 {
@@ -25,6 +26,44 @@ namespace UyeTakip.Controllers
         public async Task<ActionResult<IEnumerable<Uye>>> GetUyeler()
         {
             return await _context.Uyeler.ToListAsync();
+        }
+
+        // GET: api/UyeGorevDurumlar
+        [HttpGet("GetUyeGorevDurumlar")]
+        //[Route("api/[controller]/GetUyeGorevDurumlar")]
+        public async Task<ActionResult<IEnumerable<KeyValueModel>>> GetUyeGorevDurumlar()
+        {
+            var durumlar = await _context.Uyeler
+
+                .GroupBy(t => t.UyeGorevDurumu)
+                .Select(s =>
+                    //new ValueTuple<string, int>(
+                    //    Enum.GetName(typeof(DbEnums.GorevDurumu), s.Key),
+                    //    s.Count())
+                    new   { s.Key, Value = s.Count() }
+                )
+                .ToListAsync();
+
+            return durumlar.Select(s => new KeyValueModel() { Key = Enum.GetName(typeof(DbEnums.GorevDurumu), s.Key), Value = s.Value }).ToList(); ;
+        }
+
+        // GET: api/UyeGorevDurumlar
+        [HttpGet("GetUyeIller")]
+        //[Route("api/[controller]/GetUyeGorevDurumlar")]
+        public async Task<ActionResult<IEnumerable<KeyValueModel>>> GetUyeIller()
+        {
+            var durumlar = await _context.Uyeler
+
+                .GroupBy(t => t.IkametIlId)
+                .Select(s =>
+                    //new ValueTuple<string, int>(
+                    //    Enum.GetName(typeof(DbEnums.GorevDurumu), s.Key),
+                    //    s.Count())
+                    new { s.Key, Value = s.Count() }
+                )
+                .ToListAsync();
+
+            return durumlar.Select(s => new KeyValueModel() { Key = s.Key.ToString(), Value = s.Value }).ToList(); ;
         }
 
         // GET: api/Uye/5

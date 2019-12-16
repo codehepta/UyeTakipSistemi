@@ -1,5 +1,10 @@
-export class KullaniciModel{
-    id: number;
-    username: string;
-    password: string;
+export class KullaniciModel {
+  id: number;
+  username: string;
+  password: string;
+  kullaniciTipi: number;
+
+ 
 }
+
+

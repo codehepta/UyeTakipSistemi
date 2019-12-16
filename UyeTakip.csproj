@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -39,6 +39,7 @@
     <None Remove="ClientApp\src\app\okul\okul.model.ts" />
     <None Remove="ClientApp\src\app\shared\il.model.ts" />
     <None Remove="ClientApp\src\app\shared\ilce.model.ts" />
+    <None Remove="ClientApp\src\app\shared\KeyValue.ts" />
     <None Remove="ClientApp\src\app\uye\uye.model.ts" />
     <None Remove="ClientApp\src\app\uye\uyegoster.model.ts" />
   </ItemGroup>
@@ -51,8 +52,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\okul\okul.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\il.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\ilce.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\KeyValue.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\uye\uye.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\uye\uyegoster.model.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\chart-components\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

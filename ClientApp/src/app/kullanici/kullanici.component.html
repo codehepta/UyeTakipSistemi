@@ -1,31 +1,33 @@
+<nb-card accent="info">
+  <nb-card-header>Kullanıcı Tanımları</nb-card-header>
+  <nb-card-body>
+    <p class="text-right">
+      <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#duzenleModal" (click)="btnYeniKayit_Click()">Yeni Kayıt</button>
+    </p>
 
-<div class="container">
-  <h2>
-    Kullanıcı Tanımları
-  </h2>
-  <p class="text-right">
-    <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#duzenleModal" (click)="btnYeniKayit_Click()">Yeni Kayıt</button>
-  </p>
+    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="kullanicilar">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Kullanıcı Adı</th>
+          <th>Kullanıcı Tipi</th>
+          <th class="text-right">İşlemler</th>
 
-  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="kullanicilar">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Kullanıcı Adı</th>
-        <th class="text-right">İşlemler</th>
+        </tr>
+      </thead>
 
-      </tr>
-    </thead>
+      <tbody>
+        <tr *ngFor="let k  of kullanicilar">
+          <td>{{ k.id }}</td>
+          <td>{{ k.username }}</td>
+          <td>{{ getkullaniciTipi(k.kullaniciTipi) }}</td>
+          <td class="text-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#duzenleModal" (click)="btnDuzenle_Click(k)">Düzenle</button>&nbsp;<button type="button" class="btn btn-danger" (click)="btnSil_Click(k.id)">Sil</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>
 
-    <tbody>
-      <tr *ngFor="let k  of kullanicilar">
-        <td>{{ k.id }}</td>
-        <td>{{ k.username }}</td>
-        <td class="text-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#duzenleModal" (click)="btnDuzenle_Click(k)">Düzenle</button>&nbsp;<button type="button" class="btn btn-danger" (click)="btnSil_Click(k.id)">Sil</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
 
 <!-- Modal -->
@@ -50,6 +52,19 @@
           <label for="txtSifre" class="col-sm-3 col-form-label">Şifre</label>
           <div class="col-sm-9">
             <input type="password" class="form-control" id="txtSifre" placeholder="Şifre" [(ngModel)]="duzenleModel.password">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="selKullaniciTipi" class="col-sm-3 col-form-label">Kullanıcı Tipi</label>
+          <div class="col-sm-9">
+            <select id="selKullaniciTipi" class="form-control"
+                    [(ngModel)]="duzenleModel.kullaniciTipi">
+              <option value="1" selected>Admin</option>
+              <option value="2">Genel Merkez</option>
+              <option value="3">Bölge</option>
+              <option value="4">Rapor</option>
+            </select>
           </div>
         </div>
         <input type="hidden" id="txtId" [(ngModel)]="duzenleModel.id" />
