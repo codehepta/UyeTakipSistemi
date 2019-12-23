@@ -8,8 +8,6 @@ import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { KurumComponent } from './kurum/kurum.component';
 import { OkulComponent } from './okul/okul.component';
 import { MeslekComponent } from './meslek/meslek.component';
@@ -22,15 +20,14 @@ import { NbThemeModule, NbCardModule, NbLayoutModule, NbToastrModule } from '@ne
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbIconModule } from '@nebular/theme';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { PieChart2Component } from './chart-components/pie-chart2/pie-chart2.component'
+import { PieChart2Component } from './chart-components/pie-chart2/pie-chart2.component';
+import { FakulteComponent } from './fakulte/fakulte.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     KurumComponent,
     OkulComponent,
     MeslekComponent,
@@ -39,9 +36,8 @@ import { PieChart2Component } from './chart-components/pie-chart2/pie-chart2.com
     KullaniciComponent,
     UyeEkleComponent,
     PieChartComponent,
-    PieChart2Component
-    
-   
+    PieChart2Component,
+    FakulteComponent
     
   ],
   imports: [
@@ -60,14 +56,13 @@ import { PieChart2Component } from './chart-components/pie-chart2/pie-chart2.com
     NbToastrModule.forRoot(),
     RouterModule.forRoot([ 
         { path: '', component: HomeComponent, pathMatch: 'full' },
-        { path: 'counter', component: CounterComponent },
-        { path: 'fetch-data', component: FetchDataComponent },
         { path: 'kurumlar', component: KurumComponent },
         { path: 'okullar', component: OkulComponent },
         { path: 'meslekler', component: MeslekComponent },
         { path: 'gorevler', component: GorevComponent },
         { path: 'uyeler', component: UyeComponent },
         { path: 'kullanicilar', component: KullaniciComponent },
+        { path: 'fakulteler', component: FakulteComponent },
         { path: 'uyeekle', component: UyeEkleComponent } 
 
     ])

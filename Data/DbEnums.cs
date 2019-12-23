@@ -29,8 +29,8 @@ namespace UyeTakip.Data
             Admin = 1,
             [Description("Genel Merkez")]
             GenelMerkez = 2,
-            [Description("Bölge")]
-            Bolge = 3,
+            [Description("Il")]
+            Il = 3,
             [Description("Rapor")]
             Rapor = 4
             

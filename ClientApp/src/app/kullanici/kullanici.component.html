@@ -11,6 +11,7 @@
           <th>Id</th>
           <th>Kullanıcı Adı</th>
           <th>Kullanıcı Tipi</th>
+          <td>İli</td>
           <th class="text-right">İşlemler</th>
 
         </tr>
@@ -20,7 +21,9 @@
         <tr *ngFor="let k  of kullanicilar">
           <td>{{ k.id }}</td>
           <td>{{ k.username }}</td>
-          <td>{{ getkullaniciTipi(k.kullaniciTipi) }}</td>
+          <!--<td>{{ getkullaniciTipi(k.kullaniciTipi) }}</td>-->
+        <td>{{k.getkullaniciTipi}}</td>
+          <td>{{ GetIlAdi(k.ilId) }}</td>
           <td class="text-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#duzenleModal" (click)="btnDuzenle_Click(k)">Düzenle</button>&nbsp;<button type="button" class="btn btn-danger" (click)="btnSil_Click(k.id)">Sil</button></td>
         </tr>
       </tbody>
@@ -41,37 +44,73 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group row">
-          <label for="txtAd" class="col-sm-3 col-form-label">Kullanıcı Adı</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="txtAd" placeholder="Kullanıcı Adı" [(ngModel)]="duzenleModel.username">
-          </div>
-        </div>
+        <form #kayitForm="ngForm" (change)="formChange();">
 
-        <div class="form-group row">
-          <label for="txtSifre" class="col-sm-3 col-form-label">Şifre</label>
-          <div class="col-sm-9">
-            <input type="password" class="form-control" id="txtSifre" placeholder="Şifre" [(ngModel)]="duzenleModel.password">
-          </div>
-        </div>
 
-        <div class="form-group row">
-          <label for="selKullaniciTipi" class="col-sm-3 col-form-label">Kullanıcı Tipi</label>
-          <div class="col-sm-9">
-            <select id="selKullaniciTipi" class="form-control"
-                    [(ngModel)]="duzenleModel.kullaniciTipi">
-              <option value="1" selected>Admin</option>
-              <option value="2">Genel Merkez</option>
-              <option value="3">Bölge</option>
-              <option value="4">Rapor</option>
-            </select>
+          <div class="form-group row">
+            <label for="txtAd" class="col-sm-3 col-form-label">Kullanıcı Adı</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control"
+                     required minlength="6" pattern="[a-zA-Z ]*"
+                     #txtAd="ngModel"
+                     id="txtAd" name="txtAd" placeholder="Kullanıcı Adı"
+                     [(ngModel)]="duzenleModel.username">
+              <div *ngIf="txtAd.invalid && (txtAd.dirty || txtAd.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="txtAd.errors.required">
+                  Kullanıcı adı gereklidir.
+                </div>
+                <div *ngIf="txtAd.errors.minlength">
+                  En az 6 karakter uzunluğunda olmalıdır.
+                </div>
+                <div *ngIf="txtAd.errors.pattern">
+                  Kullanıcı adı sadece harflerden oluşmalıdır.
+                </div>
+
+              </div>
+            </div>
           </div>
-        </div>
-        <input type="hidden" id="txtId" [(ngModel)]="duzenleModel.id" />
+
+          <div class="form-group row">
+            <label for="txtSifre" class="col-sm-3 col-form-label">Şifre</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="txtSifre" name="txtSifre" placeholder="Şifre" [(ngModel)]="duzenleModel.password">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="selKullaniciTipi" class="col-sm-3 col-form-label">Kullanıcı Tipi</label>
+            <div class="col-sm-9">
+              <select id="selKullaniciTipi" name="selKullaniciTipi" class="form-control"
+                      [(ngModel)]="duzenleModel.kullaniciTipi">
+                <option value="1" selected>Admin</option>
+                <option value="2">Genel Merkez</option>
+                <option value="3">İl</option>
+                <option value="4">Rapor</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row" *ngIf="duzenleModel.kullaniciTipi==3">
+            <label for="selKullaniciIl" class="col-sm-3 col-form-label">Bağlı İl</label>
+            <div class="col-sm-9">
+              <select id="selKullaniciIl" name="selKullaniciIl" class="form-control"
+                      [(ngModel)]="duzenleModel.ilId">
+                <option value="{{i.id}}" *ngFor="let i of iller">{{i.ad}}</option>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" id="txtId" [(ngModel)]="duzenleModel.id" name="txtId" />
+          <div class="alert alert-warning" *ngIf="errorMessages">{{errorMessages}}</div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-        <button type="button" class="btn btn-primary" (click)="btnUpdate_Click();">Kaydet</button>
+        <button type="button" class="btn btn-primary"
+                [disabled]="kayitForm.invalid"
+                (click)="btnUpdate_Click();">
+          Kaydet
+        </button>
       </div>
     </div>
   </div>

@@ -24,6 +24,8 @@ namespace UyeTakip.Data
 
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Gorev> Gorevler { get; set; }
+        public DbSet<Fakulte> Fakulteler { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Uye>().HasData(
@@ -67,9 +69,28 @@ namespace UyeTakip.Data
              new Kurum() { Id = 7, Ad = "Şırnak Milli Eğitim Müdürlüğü" }
              );
 
+            modelBuilder.Entity<Fakulte>().HasData(
+           new Fakulte() { Id = 1, Ad = "İktisadi İdari Bilimler Fakültesi" },
+           new Fakulte() { Id = 2, Ad = "Tıp Fakültesi" },
+           new Fakulte() { Id = 3, Ad = "Hukuk Fakültesi" },
+           new Fakulte() { Id = 4, Ad = "Edebiyat Fakültesi" },
+           new Fakulte() { Id = 5, Ad = "Fen Fakültesi" },
+           new Fakulte() { Id = 6, Ad = "Eczacılık Fakültesi" },
+           new Fakulte() { Id = 7, Ad = "Diş Hekimliği Fakültesi" },
+           new Fakulte() { Id = 8, Ad = "İşletme Fakültesi" },
+           new Fakulte() { Id = 9, Ad = "Siyasal Bilgiler Fakültesi" },
+           new Fakulte() { Id = 10, Ad = "İletişim Fakültesi" },
+           new Fakulte() { Id = 11, Ad = "Su Bilimleri Fakültesi" },
+           new Fakulte() { Id = 12, Ad = "İlahiyat Fakültesi" },
+           new Fakulte() { Id = 13, Ad = "Açık Uzaktan Eğitim Öğrenim Fakültesi" },
+           new Fakulte() { Id = 14, Ad = "Hemşirelik Fakültesi" },
+           new Fakulte() { Id = 15, Ad = "Mimarlık Fakültesi" },
+           new Fakulte() { Id = 16, Ad = "Mühendislik Fakültesi" }
+           );
+
             modelBuilder.Entity<Kullanici>().HasData(
             new Kullanici() { Id = 1, Username = "admin", Password = "123456", KullaniciTipi = DbEnums.KullaniciTipleri.Admin },
-            new Kullanici() { Id = 2, Username = "bolgekul", Password = "123456", KullaniciTipi = DbEnums.KullaniciTipleri.Bolge }
+            new Kullanici() { Id = 2, Username = "ilkul", Password = "123456", KullaniciTipi = DbEnums.KullaniciTipleri.Il,IlId=1 }
             );
 
 

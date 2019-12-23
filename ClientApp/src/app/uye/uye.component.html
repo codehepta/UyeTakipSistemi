@@ -46,9 +46,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <label for="txtDuzenle">Ad</label>
-        <input type="text" class="form-control" id="txtAd" [(ngModel)]="duzenleModel.adi" />
-        <input type="hidden" id="txtKurumId" [(ngModel)]="duzenleModel.id" />
+        <form>
+          <label for="txtDuzenle">Ad</label>
+          <input type="text" class="form-control" id="txtAd" name="txtAd"
+                 required minlength="4"
+                 [(ngModel)]="duzenleModel.adi" #txtAd="ngModel" />
+          <div *ngIf="txtAd.errors.required">
+            Name is required.
+          </div>
+          <input type="hidden" id="txtKurumId" [(ngModel)]="duzenleModel.id" />
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>

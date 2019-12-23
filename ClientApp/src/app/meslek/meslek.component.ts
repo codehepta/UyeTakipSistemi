@@ -22,10 +22,10 @@ export class MeslekComponent implements OnInit {
             (data) => {
                 this.ngOnInit();
 
-            }),
+            },
             err => {
                 console.log("Error", err);
-            };
+            });
 
 
     }
@@ -49,19 +49,19 @@ export class MeslekComponent implements OnInit {
             this.service.Insert(this.duzenleModel).subscribe(
                 (data) => {
                     this.ngOnInit();
-                }),
+                },
                 err => {
                     console.log("Error", err);
-                };
+                });
         }
         else {
             this.service.Update(this.duzenleModel).subscribe(
                 (data) => {
                     this.ngOnInit();
-                }),
+                },
                 err => {
                     console.log("Error", err);
-                };
+                });
         }
 
       $('#duzenleModal').modal('hide');

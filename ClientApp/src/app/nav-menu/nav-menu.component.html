@@ -35,9 +35,15 @@
                 <div class="dropdown-menu">
                   <a class="dropdown-item" [routerLink]="['/uyeekle']">Yeni Üye Kayıt</a>
                   <a class="dropdown-item" [routerLink]="['/uyeler']">Üye Listesi</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </div>&nbsp;
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Mezunlar
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" [routerLink]="['/uyeekle']">Yeni Mezun Kayıt</a>
+                  <a class="dropdown-item" [routerLink]="['/uyeler']">Mezunlar Listesi</a>
                 </div>
               </div>&nbsp;
               <div class="btn-group">
@@ -45,7 +51,7 @@
                   Raporlar
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Üye Raporu</a>
+                  <a class="dropdown-item" [routerLink]="['/']">Üye Raporu</a>
                   <a class="dropdown-item" href="#">-</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                   <div class="dropdown-divider"></div>
@@ -61,6 +67,7 @@
                   <a class="dropdown-item" [routerLink]="['/okullar']">Okullar</a>
                   <a class="dropdown-item" [routerLink]="['/meslekler']">Meslekler</a>
                   <a class="dropdown-item" [routerLink]="['/gorevler']">Görevler</a>
+                  <a class="dropdown-item" [routerLink]="['/fakulteler']">Fakülteler</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" [routerLink]="['/kullanicilar']">Kullancılar</a>
                 </div>

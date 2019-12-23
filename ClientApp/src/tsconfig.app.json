@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": [ "jquery", "bootstrap" ],
+    "types": [ "jquery", "bootstrap", "jest" ],
     "resolveJsonModule": true
 
   },

@@ -13,5 +13,6 @@ namespace UyeTakip.Data
         public string Password { get; set; }
 
         public KullaniciTipleri KullaniciTipi { get; set; }
+        public int? IlId { get; set; }
     }
 }
