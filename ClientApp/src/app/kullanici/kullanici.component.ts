@@ -76,7 +76,7 @@ export class KullaniciComponent implements OnInit {
         k.id = m.id;
         k.ilId = m.ilId;
         k.password = m.password;
-        k.username = m.password;
+        k.username = m.username;
         return k;
       });
 

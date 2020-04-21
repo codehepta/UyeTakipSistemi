@@ -22,6 +22,7 @@ import { NbIconModule } from '@nebular/theme';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PieChart2Component } from './chart-components/pie-chart2/pie-chart2.component';
 import { FakulteComponent } from './fakulte/fakulte.component';
+import { MezunEkleComponent } from './mezun-ekle/mezun-ekle.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FakulteComponent } from './fakulte/fakulte.component';
     UyeEkleComponent,
     PieChartComponent,
     PieChart2Component,
-    FakulteComponent
+    FakulteComponent,
+    MezunEkleComponent
     
   ],
   imports: [

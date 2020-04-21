@@ -35,5 +35,25 @@ namespace UyeTakip.Data
             Rapor = 4
             
         }
+
+        public enum KanGruplari
+        {
+            [Description("A+")]
+            Aa = 1,
+            [Description("A-")]
+            Ae = 2,
+            [Description("B+")]
+            Ba = 3,
+            [Description("B-")]
+            Be = 4,
+            [Description("AB+")]
+            ABa = 5,
+            [Description("AB-")]
+            ABe = 6,
+            [Description("0+")]
+            Oa = 7,
+            [Description("0-")]
+            Oe =8
+        }
     }
 }
