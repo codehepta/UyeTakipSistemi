@@ -15,6 +15,7 @@ export class KurumComponent implements OnInit {
 
     ngOnInit() {
         this.GetKurumlar();
+        // TODO : do something here
 
     }
     btnSil_Click(id: number) {
