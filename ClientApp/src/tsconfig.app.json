@@ -2,12 +2,13 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": [ "jquery", "bootstrap", "jest" ],
+    "types": ["jquery", "bootstrap"],
     "resolveJsonModule": true
-
   },
-  "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
+  "files": [
+    "main.ts"
+  ],
+  "include": [
+    "**/*.d.ts"
   ]
 }

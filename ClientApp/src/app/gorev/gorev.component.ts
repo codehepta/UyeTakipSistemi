@@ -3,6 +3,7 @@ import { GorevModel } from './gorev.model';
 import { GorevService } from './gorev.service';
 
 @Component({
+  standalone: false,
   selector: 'app-gorev',
   templateUrl: './gorev.component.html',
   styleUrls: ['./gorev.component.css']

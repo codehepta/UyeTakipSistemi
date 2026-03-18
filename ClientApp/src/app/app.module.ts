@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ChartsModule } from 'ng2-charts';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -43,11 +43,11 @@ import { MezunEkleComponent } from './mezun-ekle/mezun-ekle.component';
     
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ChartsModule,
+    BaseChartDirective,
     NbCardModule,
     NbLayoutModule,
     NbEvaIconsModule,
@@ -69,7 +69,9 @@ import { MezunEkleComponent } from './mezun-ekle/mezun-ekle.component';
 
     ])
   ],
-  providers: [], 
+  providers: [
+    provideCharts(withDefaultRegisterables())
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

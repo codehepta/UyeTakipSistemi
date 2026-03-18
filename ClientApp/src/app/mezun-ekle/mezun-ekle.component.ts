@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-mezun-ekle',
   templateUrl: './mezun-ekle.component.html',
   styleUrls: ['./mezun-ekle.component.css']

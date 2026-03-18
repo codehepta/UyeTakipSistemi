@@ -6,6 +6,7 @@ import { IlService } from '../shared/il.service';
 import { NbToastrService, NbComponentStatus } from '@nebular/theme';
 
 @Component({
+  standalone: false,
   selector: 'app-kullanici',
   templateUrl: './kullanici.component.html',
   styleUrls: ['./kullanici.component.css']
