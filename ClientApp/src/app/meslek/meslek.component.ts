@@ -3,6 +3,7 @@ import { MeslekModel } from './meslek.model';
 import { MeslekService } from './meslek.service';
 
 @Component({
+  standalone: false,
   selector: 'app-meslek',
   templateUrl: './meslek.component.html',
   styleUrls: ['./meslek.component.css']

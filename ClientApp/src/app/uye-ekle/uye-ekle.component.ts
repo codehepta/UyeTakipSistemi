@@ -15,6 +15,7 @@ import { NbToastrService, NbComponentStatus } from '@nebular/theme';
 import { KeyIntPairModel, EnumsService } from '../shared/enums.service';
 
 @Component({
+  standalone: false,
   selector: 'app-uye-ekle',
   templateUrl: './uye-ekle.component.html',
   styles: []

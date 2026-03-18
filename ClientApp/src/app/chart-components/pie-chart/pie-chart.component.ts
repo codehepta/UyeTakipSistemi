@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartType, ChartOptions } from 'chart.js';
-import { Label } from 'ng2-charts';
-import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { ChartType, ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { UyeService } from '../../uye/uye.service';
 
 import { KeyValueModel } from '../../shared/KeyValue';
 
 @Component({
+  standalone: false,
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
@@ -14,44 +14,49 @@ import { KeyValueModel } from '../../shared/KeyValue';
 export class PieChartComponent implements OnInit {
 
   uyeler: KeyValueModel[];
-  gorevler: Array<string> = [];
-  sayilar: Array<number> = [];
-  // Pie
-  public pieChartOptions: ChartOptions = {
+
+  public pieChartOptions: ChartConfiguration<'pie'>['options'] = {
     responsive: true,
-    legend: {
-      position: 'top',
-    },
     plugins: {
+      legend: {
+        position: 'top',
+      },
       datalabels: {
         formatter: (value, ctx) => {
-          const label = ctx.chart.data.labels[ctx.dataIndex];
-          return label;
+          return ctx.chart.data.labels?.[ctx.dataIndex] ?? value;
         },
       },
     }
   };
-  public pieChartLabels: Label[] = [];
-  public pieChartData: number[] = [];
+  public pieChartData: ChartData<'pie'> = {
+    labels: [],
+    datasets: [{
+      data: [],
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+    }]
+  };
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
-  public pieChartPlugins = [pluginDataLabels];
-  public pieChartColors = [
-    {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
-    },
-  ];
+  public pieChartPlugins = [ChartDataLabels];
 
   constructor(private service: UyeService) { }
 
   GetUyeGorevDurumlar(): void {
     this.service.GetUyeGorevDurumlar().subscribe(r => {
       this.uyeler = r;
+      const labels: string[] = [];
+      const data: number[] = [];
       this.uyeler.forEach(f => {
-        this.pieChartLabels.push(f.key);
-        this.pieChartData.push(f.value);
-
-      })
+        labels.push(f.key);
+        data.push(f.value);
+      });
+      this.pieChartData = {
+        labels,
+        datasets: [{
+          data,
+          backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+        }]
+      };
     });
   }
 
@@ -59,14 +64,12 @@ export class PieChartComponent implements OnInit {
     this.GetUyeGorevDurumlar();
   }
 
-  // events
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  public chartClicked({ event, active }: { event?: ChartEvent, active?: object[] }): void {
     console.log(event, active);
   }
 
-  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  public chartHovered({ event, active }: { event: ChartEvent, active: object[] }): void {
     console.log(event, active);
   }
-
 
 }

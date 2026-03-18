@@ -6,6 +6,7 @@ import { EnumsService } from '../shared/enums.service';
 
 
 @Component({
+  standalone: false,
   selector: 'app-uye',
   templateUrl: './uye.component.html',
   styleUrls: ['./uye.component.css']

@@ -3,12 +3,12 @@
     <div class="chart">
       <canvas baseChart
               [data]="pieChartData"
-              [labels]="pieChartLabels"
-              [chartType]="pieChartType"
+              [type]="pieChartType"
               [options]="pieChartOptions"
               [plugins]="pieChartPlugins"
-              [colors]="pieChartColors"
-              [legend]="pieChartLegend">
+              [legend]="pieChartLegend"
+              (chartClick)="chartClicked($event)"
+              (chartHover)="chartHovered($event)">
       </canvas>
     </div>
   </div>

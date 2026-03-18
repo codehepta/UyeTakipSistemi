@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FakulteModel } from './Fakulte.model';
-import { FakulteService } from './Fakulte.service';
+import { FakulteModel } from './fakulte.model';
+import { FakulteService } from './fakulte.service';
 
 @Component({
+  standalone: false,
   selector: 'app-fakulte',
   templateUrl: './fakulte.component.html',
   styleUrls: ['./fakulte.component.css']

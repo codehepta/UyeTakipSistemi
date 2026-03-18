@@ -3,6 +3,7 @@ import { OkulModel } from './okul.model';
 import { OkulService } from './okul.service';
 
 @Component({
+  standalone: false,
   selector: 'app-okul',
   templateUrl: './okul.component.html',
   styleUrls: ['./okul.component.css']

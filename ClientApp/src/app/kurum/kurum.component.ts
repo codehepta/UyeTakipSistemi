@@ -3,6 +3,7 @@ import { KurumService } from './kurum.service';
 import { KurumModel } from './kurum.model';
 
 @Component({
+    standalone: false,
     selector: 'app-kurum',
     templateUrl: './kurum.component.html',
     styleUrls: ['./kurum.component.css']
